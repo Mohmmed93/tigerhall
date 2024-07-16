@@ -187,7 +187,6 @@
 * change commitlint config from JS to TS ([6509805](https://github.com/ixartz/Next-js-Boilerplate/commit/650980539eb16c4ef0f5d1ed3e833cdb08faaf86))
 * change jest config extension from js to TypeScript ([1cdea44](https://github.com/ixartz/Next-js-Boilerplate/commit/1cdea44c2a193e9df792dc997f6aa5304e043ff6))
 * change nodeResolution to the new bundler from TypeScript 5.0 ([59282a2](https://github.com/ixartz/Next-js-Boilerplate/commit/59282a2f028a10b841f4af42248e4ecd2c41c080))
-* convert Tailwind config file from JS to TS ([aff3b27](https://github.com/ixartz/Next-js-Boilerplate/commit/aff3b276c6b857570c3ec0b68de3cd5efaaeebbd))
 
 # [3.33.0](https://github.com/ixartz/Next-js-Boilerplate/compare/v3.32.1...v3.33.0) (2024-01-03)
 
@@ -487,7 +486,6 @@
 ### Features
 
 * add storybook into project ([51f3748](https://github.com/ixartz/Next-js-Boilerplate/commit/51f3748c0cb6d9cd04cdb0d3b9d95a0f60851866))
-* add tailwind css support in Storybook ([5e0d287](https://github.com/ixartz/Next-js-Boilerplate/commit/5e0d287cef8a898df8f1a98632a8703657282100))
 * remove warning for no extreneous deps in stories ([b243d44](https://github.com/ixartz/Next-js-Boilerplate/commit/b243d441e4b75566e16f5fa64d26900267eb89f5))
 
 
@@ -655,8 +653,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* update to Next.js 13 and Tailwind CSS 3.2
-
 ### Features
 
 * add commit script in package.json ([8f4719e](https://github.com/ixartz/Next-js-Boilerplate/commit/8f4719ec550ab0dbffa93ca1d278aa9e370a773a))
@@ -665,9 +661,6 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 * Eslint comment update ([8baa5d1](https://github.com/ixartz/Next-js-Boilerplate/commit/8baa5d160734a3cadb419534509cc6edaac57456))
-
-
-* update to Next.js 13 and Tailwind CSS 3.2 ([fc9f2c1](https://github.com/ixartz/Next-js-Boilerplate/commit/fc9f2c1cf914c15b36cdf881306d20b405a259e8))
 
 ### [2.1.1](https://github.com/ixartz/Next-js-Boilerplate/compare/v2.1.0...v2.1.1) (2022-09-08)
 

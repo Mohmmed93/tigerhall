@@ -46,14 +46,14 @@ export default function Index() {
       <h2 className="mt-5 text-2xl font-bold">Sponsors</h2>
       <Sponsors />
       <h2 className="mt-5 text-2xl font-bold">
-        Boilerplate Code for Your Next.js Project with Tailwind CSS
+        Boilerplate Code for Your Next.js Project with Chakra UI CSS
       </h2>
       <p className="text-base">
         <span role="img" aria-label="rocket">
           🚀
         </span>{' '}
         Next.js Boilerplate is a developer-friendly starter code for Next.js
-        projects, built with Tailwind CSS, and TypeScript.{' '}
+        projects, built with Chakra UI, and TypeScript.{' '}
         <span role="img" aria-label="zap">
           ⚡️
         </span>{' '}

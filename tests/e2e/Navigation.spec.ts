@@ -8,7 +8,7 @@ test.describe('Navigation', () => {
 
       await expect(
         page.getByRole('heading', {
-          name: 'Boilerplate Code for Your Next.js Project with Tailwind CSS',
+          name: 'Boilerplate Code for Your Next.js Project with Chakra UI CSS',
         }),
       ).toBeVisible();
 
