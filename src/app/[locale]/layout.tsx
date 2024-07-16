@@ -41,7 +41,7 @@ export default function RootLayout(props: {
   const messages = useMessages();
 
   return (
-    <html lang={props.params.locale}>
+    <html style={{ backgroundColor: 'black' }} lang={props.params.locale}>
       <body>
         <NextIntlClientProvider
           locale={props.params.locale}

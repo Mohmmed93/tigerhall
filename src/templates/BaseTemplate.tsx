@@ -1,4 +1,4 @@
-import { Box, Divider, Link } from '@chakra-ui/react';
+import { Box, Link } from '@chakra-ui/react';
 import { useTranslations } from 'next-intl';
 
 import { AppConfig } from '@/utils/AppConfig';
@@ -10,20 +10,43 @@ const BaseTemplate = (props: {
   const t = useTranslations('BaseTemplate');
 
   return (
-    <Box w="full" bg="#0E0F0F" fontFamily="body">
+    <Box
+      w="full"
+      bg="#0E0F0F"
+      fontFamily="body"
+      minHeight="100vh"
+      position="relative"
+    >
       <Box maxW="full" mx="auto">
-        <nav>{props.header}</nav>
-        <Divider borderColor="#1C1E1F" borderWidth="2px" />
-        <Box color="black" as="main" py={8}>
+        <Box
+          position="fixed"
+          top="0"
+          left="0"
+          right="0"
+          zIndex="999"
+          bg="#0E0F0F"
+          boxShadow="0px 2px 4px rgba(0, 0, 0, 0.1)"
+        >
+          {props.header}
+        </Box>
+
+        <Box color="black" as="main" py={10} mt={10}>
           {props.children}
         </Box>
+
         <Box
+          position="fixed"
           as="footer"
           borderTop="1px"
-          borderColor="gray.300"
+          borderColor="#1C1E1F"
           py={8}
           textAlign="center"
           fontSize="sm"
+          // position="absolute"
+          bottom="0"
+          left="0"
+          right="0"
+          bg="#0E0F0F"
         >
           © {new Date().getFullYear()} {AppConfig.name}. {t('made_with')}{' '}
           <Link
