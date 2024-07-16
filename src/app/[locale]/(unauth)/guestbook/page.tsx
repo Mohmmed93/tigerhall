@@ -3,8 +3,6 @@ import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 
-import { AddGuestbookForm } from '@/components/AddGuestbookForm';
-
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
     locale: props.params.locale,
@@ -22,8 +20,6 @@ const Guestbook = () => {
 
   return (
     <>
-      <AddGuestbookForm />
-
       <Suspense fallback={<p>{t('loading_guestbook')}</p>} />
 
       <div className="mt-2 text-center text-sm">
