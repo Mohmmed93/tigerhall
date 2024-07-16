@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 
+import { Chakra } from '@/libs/Chakra';
 import { AppConfig } from '@/utils/AppConfig';
 
 export const metadata: Metadata = {
@@ -35,10 +36,8 @@ export default function RootLayout(props: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // Validate that the incoming `locale` parameter is valid
   if (!AppConfig.locales.includes(props.params.locale)) notFound();
 
-  // Using internationalization in Client Components
   const messages = useMessages();
 
   return (
@@ -48,7 +47,7 @@ export default function RootLayout(props: {
           locale={props.params.locale}
           messages={messages}
         >
-          {props.children}
+          <Chakra>{props.children}</Chakra>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,61 +1,42 @@
+import { Box, Divider, Link } from '@chakra-ui/react';
 import { useTranslations } from 'next-intl';
 
 import { AppConfig } from '@/utils/AppConfig';
 
 const BaseTemplate = (props: {
-  leftNav: React.ReactNode;
-  rightNav?: React.ReactNode;
+  header?: React.ReactNode;
   children: React.ReactNode;
 }) => {
   const t = useTranslations('BaseTemplate');
 
   return (
-    <div className="w-full px-1 text-gray-700 antialiased">
-      <div className="mx-auto max-w-screen-md">
-        <header className="border-b border-gray-300">
-          <div className="pb-8 pt-16">
-            <h1 className="text-3xl font-bold text-gray-900">
-              {AppConfig.name}
-            </h1>
-            <h2 className="text-xl">{t('description')}</h2>
-          </div>
-
-          <div className="flex justify-between">
-            <nav>
-              <ul className="flex flex-wrap gap-x-5 text-xl">
-                {props.leftNav}
-              </ul>
-            </nav>
-
-            <nav>
-              <ul className="flex flex-wrap gap-x-5 text-xl">
-                {props.rightNav}
-              </ul>
-            </nav>
-          </div>
-        </header>
-
-        <main>{props.children}</main>
-
-        <footer className="border-t border-gray-300 py-8 text-center text-sm">
-          © Copyright {new Date().getFullYear()} {AppConfig.name}.
-          {` ${t('made_with')} `}
-          <a
+    <Box w="full" bg="#0E0F0F" fontFamily="body">
+      <Box maxW="full" mx="auto">
+        <nav>{props.header}</nav>
+        <Divider borderColor="#1C1E1F" borderWidth="2px" />
+        <Box color="black" as="main" py={8}>
+          {props.children}
+        </Box>
+        <Box
+          as="footer"
+          borderTop="1px"
+          borderColor="gray.300"
+          py={8}
+          textAlign="center"
+          fontSize="sm"
+        >
+          © {new Date().getFullYear()} {AppConfig.name}. {t('made_with')}{' '}
+          <Link
             href="https://creativedesignsguru.com"
-            className="text-blue-700 hover:border-b-2 hover:border-blue-700"
+            color="blue.700"
+            _hover={{ borderBottom: '2px', borderColor: 'blue.700' }}
           >
             CreativeDesignsGuru
-          </a>
+          </Link>
           .
-          {/*
-           * PLEASE READ THIS SECTION
-           * I'm an indie maker with limited resources and funds, I'll really appreciate if you could have a link to my website.
-           * The link doesn't need to appear on every pages, one link on one page is enough.
-           * For example, in the `About` page. Thank you for your support, it'll mean a lot to me.
-           */}
-        </footer>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
