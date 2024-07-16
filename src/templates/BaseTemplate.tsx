@@ -43,6 +43,7 @@ const BaseTemplate = (props: {
           textAlign="center"
           fontSize="sm"
           // position="absolute"
+          zIndex="999"
           bottom="0"
           left="0"
           right="0"
