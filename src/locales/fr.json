@@ -2,5 +2,11 @@
   "BaseTemplate": {
     "description": "Code de démarrage pour Next.js avec Tailwind CSS",
     "made_with": "Fait avec"
+  },
+  "Podcast": {
+    "completed": "Complété"
+  },
+  "Header": {
+    "search": "Recherche..."
   }
 }

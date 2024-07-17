@@ -1,5 +1,4 @@
 import {
-  Badge,
   Box,
   Circle,
   Flex,
@@ -10,82 +9,127 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 import { FiBookmark, FiClock, FiHeadphones, FiShare2 } from 'react-icons/fi';
 
-const PodcastCard = () => {
+import { resizeImage } from '@/utils/imageResize';
+
+interface Podcast {
+  image: { uri: string };
+  categories: { name: string }[];
+  name: string;
+  experts: { firstName: string; lastName: string; company: string }[];
+  length: number;
+}
+
+interface PodcastCardProps {
+  index: number;
+  data: Podcast;
+}
+
+const PodcastCard: React.FC<PodcastCardProps> = ({ index, data }) => {
+  const { image, categories, name, experts, length } = data;
+
+  const resizedImageUrl = resizeImage(image.uri, 244, 120);
+
+  const t = useTranslations('Podcast');
+
   return (
-    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-      <Box position="relative" h="200px" bg="gray.200">
-        <Image
-          src="https://images.staging.tigerhall.io/resize/244x120/2024-02-13/d9057f82-c434-4666-95e8-d9c5d7486365.jpg"
-          alt="Podcast Image"
-          objectFit="cover"
-          w="full"
-          h="full"
-          position="absolute"
-        />
-        <Box position="absolute" top="0" left="0" zIndex="10">
-          <Box
-            bg="white"
-            borderBottomRightRadius="lg"
-            borderTopLeftRadius="md"
-            px="2"
-            py="1"
-          >
-            <Badge borderRadius="full" px="2" colorScheme="orange">
-              30% Completed
-            </Badge>
+    <Box
+      key={index}
+      maxW="sm"
+      borderWidth="1px"
+      borderRadius="lg"
+      overflow="hidden"
+      borderColor="black"
+      bg="white"
+      display="flex"
+      flexDirection="column"
+      justifyContent="space-between"
+    >
+      <Box>
+        <Box position="relative" h="200px" bg="gray.200">
+          <Image
+            src={resizedImageUrl}
+            alt="Podcast Image"
+            objectFit="cover"
+            w="full"
+            h="full"
+            position="absolute"
+          />
+          <Box position="absolute" top="0" left="0">
+            <Box bg="white" borderBottomRightRadius="lg" px="3" py="1.5">
+              30% {t('completed')}
+            </Box>
           </Box>
+          <Circle
+            size="8"
+            bg="orange.500"
+            color="white"
+            position="absolute"
+            bottom="2"
+            left="2"
+          >
+            <FiHeadphones />
+          </Circle>
+          <Flex
+            position="absolute"
+            bottom="2"
+            right="2"
+            alignItems="center"
+            bg="blackAlpha.700"
+            borderRadius="md"
+            px="2"
+          >
+            <FiClock color="white" />
+            <Text color="white" ml="1" fontWeight="bold">
+              {length}m
+            </Text>
+          </Flex>
+          <Progress
+            value={30}
+            size="xs"
+            colorScheme="orange"
+            position="absolute"
+            bottom="0"
+            left="0"
+            right="0"
+            borderBottomRadius="lg"
+          />
         </Box>
-        <Circle
-          size="8"
-          bg="orange.500"
-          color="white"
-          position="absolute"
-          bottom="2"
-          left="2"
-        >
-          <FiHeadphones />
-        </Circle>
-        <Flex
-          position="absolute"
-          bottom="2"
-          right="2"
-          alignItems="center"
-          bg="blackAlpha.700"
-          borderRadius="md"
-          px="2"
-        >
-          <FiClock color="white" />
-          <Text color="white" ml="1" fontWeight="bold">
-            20m
+
+        <Box p="2" bg="white" flex="1">
+          <Text
+            fontSize="sm"
+            color="gray.500"
+            textTransform="uppercase"
+            noOfLines={1}
+          >
+            {categories?.map((r) => r.name).join(', ')}
           </Text>
-        </Flex>
-        <Progress
-          value={30}
-          size="xs"
-          colorScheme="orange"
-          position="absolute"
-          bottom="0"
-          left="0"
-          right="0"
-          borderBottomRadius="lg"
-        />
+
+          <Text fontWeight="bold" fontSize="lg" lineHeight="normal">
+            {name}
+          </Text>
+          <VStack align="start" spacing="0" mt={2}>
+            {experts?.map((r, l) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <React.Fragment key={l}>
+                <Text as="b" color="gray.500">
+                  {r.firstName} {r.lastName}
+                </Text>
+                <Text color="gray.500" noOfLines={1}>
+                  {r.company}
+                </Text>
+              </React.Fragment>
+            ))}
+          </VStack>
+        </Box>
       </Box>
 
-      <Box p="6">
-        <Text fontSize="sm" color="gray.500" textTransform="uppercase" mb="2">
-          Communicating as a Leader
-        </Text>
-        <VStack align="start" spacing="2">
-          <Text fontWeight="bold" fontSize="lg" lineHeight="tight">
-            Peak Performance: Going From Good to Great with Simon Taudel
-          </Text>
-          <Text color="gray.500">Jane Doe</Text>
-          <Text color="gray.500">Subway APAC</Text>
-        </VStack>
-        <HStack justifyContent="flex-end" spacing="2" mt="4">
+      <Box p="2" bg="white">
+        <HStack justifyContent="flex-end" spacing="0">
           <IconButton
             aria-label="Share"
             icon={<FiShare2 />}

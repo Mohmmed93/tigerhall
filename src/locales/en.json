@@ -2,5 +2,11 @@
   "BaseTemplate": {
     "description": "Starter code for your Nextjs Boilerplate with Tailwind CSS",
     "made_with": "Made with"
+  },
+  "Podcast": {
+    "completed": "Completed"
+  },
+  "Header": {
+    "search": "Search..."
   }
 }

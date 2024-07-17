@@ -52,3 +52,8 @@ local
 
 # Sentry Config File
 .sentryclirc
+
+# env files except .env.dist
+.env
+.env.**
+!.env.dist

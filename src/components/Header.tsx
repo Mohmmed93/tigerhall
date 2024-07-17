@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, Flex, Icon, Image, Input } from '@chakra-ui/react';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 import { useSearch } from '@/libs/context/SearchProvider';
@@ -9,11 +10,12 @@ import LocaleSwitcher from './LocaleSwitcher';
 
 const Header: React.FC = () => {
   const { searchTerm, setSearchTerm } = useSearch();
-  // Handle search term change
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setSearchTerm(value);
   };
+
+  const t = useTranslations('Header');
 
   return (
     <Box bg="black" px="4" py="3">
@@ -28,7 +30,7 @@ const Header: React.FC = () => {
         <Flex align="center" justify="center" flex="2">
           <Flex align="center" px="4" w="full">
             <Input
-              placeholder="Search..."
+              placeholder={t('search')}
               bg="gray.700"
               borderRadius="md"
               border="none"
