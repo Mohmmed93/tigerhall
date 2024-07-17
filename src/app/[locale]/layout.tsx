@@ -48,22 +48,16 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function RootLayout(props: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
-  if (!AppConfig.locales.includes(props.params.locale)) notFound();
+export default function RootLayout({ children, params }: LayoutExtendedProps) {
+  if (!AppConfig.locales.includes(params.locale)) notFound();
 
   const messages = useMessages();
 
   return (
-    <html style={{ backgroundColor: 'black' }} lang={props.params.locale}>
+    <html style={{ backgroundColor: 'black' }} lang={params.locale}>
       <body>
-        <NextIntlClientProvider
-          locale={props.params.locale}
-          messages={messages}
-        >
-          <Chakra>{props.children}</Chakra>
+        <NextIntlClientProvider locale={params.locale} messages={messages}>
+          <Chakra>{children}</Chakra>
         </NextIntlClientProvider>
       </body>
     </html>
