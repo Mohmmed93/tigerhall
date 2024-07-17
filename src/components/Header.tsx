@@ -4,6 +4,7 @@ import { Box, Flex, Icon, Image, Input } from '@chakra-ui/react';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
+// Import icons
 import { useSearch } from '@/libs/context/SearchProvider';
 
 import LocaleSwitcher from './LocaleSwitcher';
@@ -15,6 +16,7 @@ const Header: React.FC = () => {
     setSearchTerm(value);
   };
 
+  // const { colorMode, toggleColorMode } = useColorMode(); // Assuming you use Chakra UI's useColorMode hook
   const t = useTranslations('Header');
 
   return (
@@ -52,6 +54,13 @@ const Header: React.FC = () => {
         </Flex>
         <Flex align="center" justify="flex-end" flex="1">
           <LocaleSwitcher />
+          {/* just configured but not in really use */}
+          {/* <IconButton
+            aria-label="theme toggle"
+            icon={colorMode === 'light' ? <RiMoonFill /> : <RiSunLine />}
+            onClick={toggleColorMode}
+            ml={2} // Adjust margin as needed
+          /> */}
         </Flex>
       </Flex>
     </Box>
