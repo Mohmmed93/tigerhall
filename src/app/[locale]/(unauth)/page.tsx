@@ -1,7 +1,8 @@
 'use client';
 
 import { useQuery } from '@apollo/client';
-import { Box, SimpleGrid } from '@chakra-ui/react';
+import { Box, SimpleGrid, Text } from '@chakra-ui/react';
+import { useTranslations } from 'next-intl';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 
@@ -43,6 +44,7 @@ const Index = () => {
   const [debouncedSearchTerm] = useDebounce(searchTerm, 300);
   const [offset, setOffset] = useState(0); // State for pagination offset
   const [contentCards, setContentCards] = useState<Podcast[]>([]); // State to store fetched data
+  const t = useTranslations('MainPage');
 
   // GraphQL query with search term and pagination variables
   const { loading, refetch, data } = useQuery<{
@@ -106,8 +108,13 @@ const Index = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const combinedText = `${t('org_name')} ${t('library')}`;
+
   return (
     <Box p="6" pb="20">
+      <Text color="white" ml="1" fontWeight="bold" fontSize="2xl" pb={5}>
+        {combinedText}
+      </Text>
       <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }} spacing="6">
         {loading && offset === 0 // Show skeleton only on initial load
           ? Array.from({ length: 15 }).map((_, index) => (

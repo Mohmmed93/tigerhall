@@ -3,6 +3,10 @@
     "description": "Starter code for your Nextjs Boilerplate with Tailwind CSS",
     "made_with": "Made with"
   },
+  "MainPage": {
+    "org_name": "Tigerhall",
+    "library": "Library"
+  },
   "Podcast": {
     "completed": "Completed"
   },

@@ -3,6 +3,10 @@
     "description": "Code de démarrage pour Next.js avec Tailwind CSS",
     "made_with": "Fait avec"
   },
+  "MainPage": {
+    "org_name": "Tigerhall",
+    "library": "Bibliothèque"
+  },
   "Podcast": {
     "completed": "Complété"
   },

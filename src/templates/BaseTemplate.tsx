@@ -42,17 +42,17 @@ const BaseTemplate = (props: {
           py={8}
           textAlign="center"
           fontSize="sm"
-          // position="absolute"
           zIndex="999"
           bottom="0"
           left="0"
           right="0"
+          textColor="white"
           bg="#0E0F0F"
         >
           © {new Date().getFullYear()} {AppConfig.name}. {t('made_with')}{' '}
           <Link
             href="https://creativedesignsguru.com"
-            color="blue.700"
+            color="white"
             _hover={{ borderBottom: '2px', borderColor: 'blue.700' }}
           >
             CreativeDesignsGuru
