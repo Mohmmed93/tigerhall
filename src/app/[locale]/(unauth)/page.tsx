@@ -111,7 +111,7 @@ const Index = () => {
   const combinedText = `${t('org_name')} ${t('library')}`;
 
   return (
-    <Box p="6" pb="20">
+    <Box p="6" pb="10">
       <Text color="white" ml="1" fontWeight="bold" fontSize="2xl" pb={5}>
         {combinedText}
       </Text>
