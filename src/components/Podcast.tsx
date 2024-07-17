@@ -60,7 +60,15 @@ const PodcastCard: React.FC<PodcastCardProps> = ({ index, data }) => {
           />
           <Box position="absolute" top="0" left="0">
             <Box bg="white" borderBottomRightRadius="lg" px="3" py="1.5">
-              30% {t('completed')}
+              <Flex align="center">
+                <Image
+                  src="/assets/images/percentage.png"
+                  alt="Percentage Image"
+                  boxSize="20px" // Adjust size as needed
+                  mr="2" // Margin to space out the image and text
+                />
+                <Text>30% {t('completed')}</Text>
+              </Flex>
             </Box>
           </Box>
           <Circle

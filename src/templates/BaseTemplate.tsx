@@ -1,4 +1,4 @@
-import { Box, Link } from '@chakra-ui/react';
+import { Box, Divider, Link } from '@chakra-ui/react';
 import { useTranslations } from 'next-intl';
 
 import { AppConfig } from '@/utils/AppConfig';
@@ -28,6 +28,7 @@ const BaseTemplate = (props: {
           boxShadow="0px 2px 4px rgba(0, 0, 0, 0.1)"
         >
           {props.header}
+          <Divider borderColor="#1C1E1F" borderWidth="2px" />
         </Box>
 
         <Box color="black" as="main" py={10} mt={10}>
@@ -49,6 +50,7 @@ const BaseTemplate = (props: {
           textColor="white"
           bg="#0E0F0F"
         >
+          {/* I would like to give credit to these individuals for their wonderful starter pack. */}
           © {new Date().getFullYear()} {AppConfig.name}. {t('made_with')}{' '}
           <Link
             href="https://creativedesignsguru.com"
