@@ -23,9 +23,10 @@ const Index = () => {
   const { loading, refetch, data } = useQuery<{
     contentCards: ContentCard;
   }>(GET_CONTENT_CARDS, {
-    variables: { keyword: debouncedSearchTerm, limit: 15, offset },
+    variables: { keyword: debouncedSearchTerm, limit: 10, offset },
     fetchPolicy: 'cache-and-network', // Ensure we always have fresh data
   });
+
   const fetchContentCards = useCallback(async () => {
     try {
       const { data: refetchData } = await refetch({
@@ -33,6 +34,7 @@ const Index = () => {
         limit: 10,
         offset,
       });
+
       if (
         refetchData === undefined ||
         refetchData.contentCards.edges.length === 0
@@ -40,6 +42,7 @@ const Index = () => {
         if (offset === 0) {
           // To simulating infinite scrolling
           // setOffset((prevOffset) => prevOffset - 10);
+
           setContentCards(refetchData.contentCards.edges);
         } else {
           setContentCards((prevCards) => [
@@ -63,6 +66,7 @@ const Index = () => {
 
   // Fetch content cards initially and on search term or offset change
   useEffect(() => {
+    setOffset(0);
     fetchContentCards();
   }, [debouncedSearchTerm, offset, fetchContentCards]);
 
