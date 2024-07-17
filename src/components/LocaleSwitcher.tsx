@@ -1,5 +1,6 @@
 'use client';
 
+import { Flex, Select } from '@chakra-ui/react';
 import { useLocale } from 'next-intl';
 import type { ChangeEventHandler } from 'react';
 
@@ -17,16 +18,23 @@ export default function LocaleSwitcher() {
   };
 
   return (
-    <select
-      defaultValue={locale}
-      onChange={handleChange}
-      className="border border-gray-300 font-medium focus:outline-none focus-visible:ring"
-    >
-      {AppConfig.locales.map((elt) => (
-        <option key={elt} value={elt}>
-          {elt.toUpperCase()}
-        </option>
-      ))}
-    </select>
+    <Flex>
+      <Select
+        value={locale}
+        onChange={handleChange}
+        borderWidth="1px"
+        borderColor="gray.300"
+        borderRadius="md"
+        fontWeight="medium"
+        focusBorderColor="blue.500"
+        textColor="white"
+      >
+        {AppConfig.locales.map((elt) => (
+          <option key={elt} value={elt}>
+            {elt.toUpperCase()}
+          </option>
+        ))}
+      </Select>
+    </Flex>
   );
 }

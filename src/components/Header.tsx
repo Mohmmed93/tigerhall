@@ -24,7 +24,15 @@ const Header: React.FC = () => {
           <Image
             src="/assets/images/tigerhall-logo.png"
             alt="Tigerhall Logo"
+            h={{ base: '6', md: '8' }}
+            srcSet="/assets/images/tigerhall-logo-mobile.png 1x, /assets/images/tigerhall-logo-mobile@2x.png 2x"
+            display={{ base: 'block', md: 'none' }}
+          />
+          <Image
+            src="/assets/images/tigerhall-logo.png"
+            alt="Tigerhall Logo"
             h="8"
+            display={{ base: 'none', md: 'block' }} // Show only on web
           />
         </Flex>
         <Flex align="center" justify="center" flex="2">
