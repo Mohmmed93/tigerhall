@@ -5,7 +5,6 @@ import {
   HStack,
   IconButton,
   Image,
-  Progress,
   Text,
   VStack,
 } from '@chakra-ui/react';
@@ -82,18 +81,12 @@ const PodcastCard: React.FC<PodcastCardProps> = ({ index, data }) => {
               {length}m
             </Text>
           </Flex>
-          <Progress
-            value={30}
-            size="xs"
-            colorScheme="orange"
-            position="absolute"
-            bottom="0"
-            left="0"
-            right="0"
-            borderBottomRadius="lg"
-          />
         </Box>
 
+        <Flex w="100%" h="2px">
+          <Box w="30%" bg="orange.600" h="100%" />
+          <Box w="70%" bg="gray.400" h="100%" />
+        </Flex>
         <Box p="2" bg="white" flex="1">
           <Text
             fontSize="sm"

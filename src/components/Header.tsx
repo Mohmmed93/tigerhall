@@ -1,8 +1,17 @@
 'use client';
 
-import { Box, Flex, Icon, Image, Input } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Icon,
+  Image,
+  Input,
+  InputGroup,
+  InputLeftElement,
+} from '@chakra-ui/react';
 import { useTranslations } from 'next-intl';
 import React from 'react';
+import { FiSearch } from 'react-icons/fi';
 
 // Import icons
 import { useSearch } from '@/libs/context/SearchProvider';
@@ -39,17 +48,22 @@ const Header: React.FC = () => {
         </Flex>
         <Flex align="center" justify="center" flex="2">
           <Flex align="center" px="4" w="full">
-            <Input
-              placeholder={t('search')}
-              bg="gray.700"
-              borderRadius="md"
-              border="none"
-              color="white"
-              _placeholder={{ color: 'gray.400' }}
-              value={searchTerm}
-              onChange={handleSearchChange}
-            />
-            <Icon color="gray.400" ml="-8" />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <Icon as={FiSearch} color="gray.400" />
+              </InputLeftElement>
+              <Input
+                placeholder={t('search')}
+                bg="gray.900"
+                borderRadius="md"
+                border="1px"
+                borderColor="gray.700"
+                color="white"
+                _placeholder={{ color: 'gray.400' }}
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
+            </InputGroup>
           </Flex>
         </Flex>
         <Flex align="center" justify="flex-end" flex="1">
