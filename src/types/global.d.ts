@@ -34,3 +34,11 @@ interface PodcastCardProps {
   index: number;
   data: Podcast;
 }
+
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+interface LayoutExtendedProps extends LayoutProps {
+  params: { locale: string };
+}

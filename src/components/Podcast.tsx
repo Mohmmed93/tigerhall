@@ -9,7 +9,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { useTranslations } from 'next-intl';
-import React from 'react';
+import React, { memo } from 'react';
 import { FiBookmark, FiClock, FiHeadphones, FiShare2 } from 'react-icons/fi';
 
 import { resizeImage } from '@/utils/imageResize';
@@ -37,6 +37,7 @@ const PodcastCard: React.FC<PodcastCardProps> = ({ index, data }) => {
       <Box>
         <Box position="relative" h="200px" bg="gray.200">
           <Image
+            loading="lazy"
             src={resizedImageUrl}
             alt="Podcast Image"
             objectFit="cover"
@@ -138,4 +139,4 @@ const PodcastCard: React.FC<PodcastCardProps> = ({ index, data }) => {
   );
 };
 
-export default PodcastCard;
+export default memo(PodcastCard);

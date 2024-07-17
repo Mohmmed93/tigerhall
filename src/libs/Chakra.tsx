@@ -13,11 +13,7 @@ import customTheme from '@/libs/styles/theme';
 import { useApollo } from './apollo';
 import { SearchProvider } from './context/SearchProvider';
 
-type ChakraProps = {
-  children: React.ReactNode;
-};
-
-export const Chakra = ({ children }: ChakraProps) => {
+export const Chakra = ({ children }: LayoutProps) => {
   const apolloClient = useApollo(null);
 
   return (
