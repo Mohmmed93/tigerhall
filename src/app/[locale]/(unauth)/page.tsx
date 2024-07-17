@@ -12,33 +12,6 @@ import { GET_CONTENT_CARDS } from '@/libs/apollo/getContent';
 import { useSearch } from '@/libs/context/SearchProvider';
 
 // Define types for the content cards
-interface Image {
-  uri: string;
-}
-
-interface Category {
-  name: string;
-}
-
-interface Expert {
-  firstName: string;
-  lastName: string;
-  title: string;
-  company: string;
-}
-
-interface Podcast {
-  name: string;
-  image: Image;
-  categories: Category[];
-  experts: Expert[];
-  length: number;
-}
-
-interface ContentCard {
-  edges: Podcast[];
-}
-
 const Index = () => {
   const { searchTerm } = useSearch();
   const [debouncedSearchTerm] = useDebounce(searchTerm, 300);

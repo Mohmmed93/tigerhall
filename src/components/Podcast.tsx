@@ -15,19 +15,6 @@ import { FiBookmark, FiClock, FiHeadphones, FiShare2 } from 'react-icons/fi';
 
 import { resizeImage } from '@/utils/imageResize';
 
-interface Podcast {
-  image: { uri: string };
-  categories: { name: string }[];
-  name: string;
-  experts: { firstName: string; lastName: string; company: string }[];
-  length: number;
-}
-
-interface PodcastCardProps {
-  index: number;
-  data: Podcast;
-}
-
 const PodcastCard: React.FC<PodcastCardProps> = ({ index, data }) => {
   const { image, categories, name, experts, length } = data;
 
