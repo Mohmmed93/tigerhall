@@ -4,14 +4,17 @@ type Messages = typeof import('../locales/en.json');
 declare interface IntlMessages extends Messages {}
 
 interface Image {
+  id: string;
   uri: string;
 }
 
 interface Category {
+  id: string;
   name: string;
 }
 
 interface Expert {
+  id: string;
   firstName: string;
   lastName: string;
   title: string;
@@ -19,6 +22,7 @@ interface Expert {
 }
 
 interface Podcast {
+  id: string;
   name: string;
   image: Image;
   categories: Category[];
@@ -26,12 +30,17 @@ interface Podcast {
   length: number;
 }
 
+interface Meta {
+  total: number;
+  limit: number;
+}
+
 interface ContentCard {
   edges: Podcast[];
+  meta: Meta;
 }
 
 interface PodcastCardProps {
-  index: number;
   data: Podcast;
 }
 

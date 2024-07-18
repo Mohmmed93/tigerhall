@@ -23,7 +23,12 @@ export const GET_CONTENT_CARDS = gql`
             ...Expert
           }
           length
+          id
         }
+      }
+      meta {
+        total
+        limit
       }
     }
   }
