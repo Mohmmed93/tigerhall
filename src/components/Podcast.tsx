@@ -14,8 +14,8 @@ import { FiBookmark, FiClock, FiHeadphones, FiShare2 } from 'react-icons/fi';
 
 import { resizeImage } from '@/utils/imageResize';
 
-const PodcastCard: React.FC<PodcastCardProps> = ({ index, data }) => {
-  const { image, categories, name, experts, length } = data;
+const PodcastCard: React.FC<PodcastCardProps> = ({ data }) => {
+  const { image, categories, name, experts, length, id } = data;
 
   const resizedImageUrl = resizeImage(image.uri, 244, 120);
 
@@ -23,7 +23,6 @@ const PodcastCard: React.FC<PodcastCardProps> = ({ index, data }) => {
 
   return (
     <Box
-      key={index}
       maxW="sm"
       borderWidth="1px"
       borderRadius="lg"
@@ -102,14 +101,13 @@ const PodcastCard: React.FC<PodcastCardProps> = ({ index, data }) => {
             {name}
           </Text>
           <VStack align="start" spacing="0" mt={2}>
-            {experts?.map((r, l) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <React.Fragment key={l}>
+            {experts?.map((expert) => (
+              <React.Fragment key={expert.id + id}>
                 <Text as="b" color="gray.500">
-                  {r.firstName} {r.lastName}
+                  {expert.firstName} {expert.lastName}
                 </Text>
                 <Text color="gray.500" noOfLines={1}>
-                  {r.company}
+                  {expert.company}
                 </Text>
               </React.Fragment>
             ))}

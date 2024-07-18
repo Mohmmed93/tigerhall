@@ -34,29 +34,21 @@ const Index = () => {
         limit: 10,
         offset,
       });
-
-      if (
-        refetchData === undefined ||
-        refetchData.contentCards.edges.length === 0
-      )
-        if (offset === 0) {
-          // To simulating infinite scrolling
-          // setOffset((prevOffset) => prevOffset - 10);
-
-          setContentCards(refetchData.contentCards.edges);
-        } else {
-          setContentCards((prevCards) => [
-            ...prevCards,
-            ...refetchData.contentCards.edges,
-          ]);
-        }
+      if (offset === 0) {
+        setContentCards(refetchData.contentCards.edges);
+      } else {
+        setContentCards((prevCards) => [
+          ...prevCards,
+          ...refetchData.contentCards.edges,
+        ]);
+      }
     } catch (error) {
       console.error('Error fetching content cards:', error);
     }
   }, [debouncedSearchTerm, offset, refetch]);
 
   useEffect(() => {
-    if (data?.contentCards?.edges) {
+    if (data?.contentCards?.edges && offset === 0) {
       setContentCards((prevCards) => [
         ...prevCards,
         ...data.contentCards.edges,
@@ -66,24 +58,27 @@ const Index = () => {
 
   // Fetch content cards initially and on search term or offset change
   useEffect(() => {
-    setOffset(0);
+    if (debouncedSearchTerm) setOffset(0);
     fetchContentCards();
-  }, [debouncedSearchTerm, offset, fetchContentCards]);
+  }, [debouncedSearchTerm, fetchContentCards]);
 
   // Function to handle infinite scrolling
-  const handleScroll = () => {
+  const handleScroll = useCallback(async () => {
     if (
       window.innerHeight + document.documentElement.scrollTop !==
       document.documentElement.offsetHeight - 0.5
     )
       return;
-    setOffset((prevOffset) => prevOffset + 10);
-  };
+    // setOffset((prevOffset) => prevOffset + 10);
+    if (contentCards.length < (data?.contentCards.meta.total || 0)) {
+      setOffset((prevOffset) => prevOffset + 10);
+    }
+  }, [contentCards]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [contentCards]);
 
   const combinedText = `${t('org_name')} ${t('library')}`;
 
@@ -98,9 +93,9 @@ const Index = () => {
               // eslint-disable-next-line react/no-array-index-key
               <PodcastSkeleton key={index} />
             ))
-          : contentCards?.map((i, index) => (
+          : contentCards?.map((podcast) => (
               // eslint-disable-next-line react/no-array-index-key
-              <PodcastCard index={index} data={i} key={index} />
+              <PodcastCard data={podcast} key={podcast.id} />
             ))}
       </SimpleGrid>
     </Box>
