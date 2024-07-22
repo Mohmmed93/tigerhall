@@ -41,6 +41,7 @@ Open http://localhost:3000 with your favorite browser to see your project.
 ├── src
 │   ├── app                         # Next JS App (App Router)
 │   ├── components                  # React components
+│   ├── hooks                       # Custom hooks
 │   ├── libs                        # 3rd party libraries configuration (apollo, context and styles)
 │   ├── locales                     # Locales folder (i18n messages)
 │   ├── styles                      # Styles folder
